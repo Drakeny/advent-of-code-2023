@@ -1,0 +1,6 @@
+﻿  Advent of Code - Day 2.cpp
+G:\DrakenyDev\Projects\DrakenyDev\Cpp\Advent of Code\Day 2 - Advent of Code\Advent of Code - Day 2.cpp(11,14): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+G:\DrakenyDev\Projects\DrakenyDev\Cpp\Advent of Code\Day 2 - Advent of Code\Advent of Code - Day 2.cpp(48,16): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+G:\DrakenyDev\Projects\DrakenyDev\Cpp\Advent of Code\Day 2 - Advent of Code\Advent of Code - Day 2.cpp(57,37): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+G:\DrakenyDev\Projects\DrakenyDev\Cpp\Advent of Code\Day 2 - Advent of Code\Advent of Code - Day 2.cpp(26): warning C4715: 'isLineValid': not all control paths return a value
+  Advent of Code - Day 2.vcxproj -> G:\DrakenyDev\Projects\DrakenyDev\Cpp\Advent of Code\Day 2 - Advent of Code\x64\Debug\Day 2 - Advent of Code.exe
