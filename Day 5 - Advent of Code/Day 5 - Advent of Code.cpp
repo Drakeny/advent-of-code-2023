@@ -2,19 +2,20 @@
 // execution begins and ends there.
 //
 
+#include <omp.h>
+
 #include <algorithm>
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
-
 using namespace std;
 
 struct MAPPEDCOORDINATES {
-  unsigned long long destination;
-  unsigned long long source;
-  unsigned long long range;
+  long long destination;
+  long long source;
+  long long range;
 
   void debugStruct() {
     cout << "{" << destination << "}"
@@ -33,14 +34,6 @@ void part1() {
     cerr << "Read failed";
     return;
   }
-  // parse all data
-  //  some data for each map
-  //  keep track of "currMappedValue" it starts as = [seed]
-  //             [seed]
-  //  [destination][source][range]
-  //  [seed] < [source] continue; // ignore entry
-  //  [source] + [range] < [seed] continue; // ignore entry
-  //  [currMappedValue] = [destination] - [source] continue;
 
   vector<long long> seeds{};
   vector<MAPPEDCOORDINATES> seedToSoil{};
@@ -90,7 +83,7 @@ void part1() {
         coords.source = values[1];
         coords.range = values[2];
         seedToSoil.push_back(coords);
-        coords.debugStruct();
+
         break;
       case 2:
         while (ss >> line) {
@@ -100,7 +93,7 @@ void part1() {
         coords.source = values[1];
         coords.range = values[2];
         soulToFetilizer.push_back(coords);
-        coords.debugStruct();
+
         break;
       case 3:
         while (ss >> line) {
@@ -110,7 +103,7 @@ void part1() {
         coords.source = values[1];
         coords.range = values[2];
         fertilizerToWater.push_back(coords);
-        coords.debugStruct();
+
         break;
       case 4:
         while (ss >> line) {
@@ -120,7 +113,7 @@ void part1() {
         coords.source = values[1];
         coords.range = values[2];
         waterToLight.push_back(coords);
-        coords.debugStruct();
+
         break;
       case 5:
         while (ss >> line) {
@@ -130,7 +123,7 @@ void part1() {
         coords.source = values[1];
         coords.range = values[2];
         lightToTemperature.push_back(coords);
-        coords.debugStruct();
+
         break;
       case 6:
         while (ss >> line) {
@@ -140,7 +133,7 @@ void part1() {
         coords.source = values[1];
         coords.range = values[2];
         temperatureToHumidity.push_back(coords);
-        coords.debugStruct();
+
         break;
       case 7:
         while (ss >> line) {
@@ -150,65 +143,74 @@ void part1() {
         coords.source = values[1];
         coords.range = values[2];
         humidityToLocation.push_back(coords);
-        coords.debugStruct();
+
         break;
     }
   }
-  cout << "Finish" << endl;
 
-  vector<long long> finalCoord{};
+  long long finalCoord = LLONG_MAX;
 
-  for (auto x : seeds) {
-    long long current{x};
-    for (auto coord : seedToSoil) {
-      if (current < coord.source) continue;
-      if (coord.source + coord.range < current) continue;
-      current = current + (coord.destination - coord.source);
-      break;
+#pragma omp parallel for num_threads(8)
+  for (size_t i = 0; i < seeds.size(); i += 2) {
+    for (long long x = 0; x < seeds[i + 1]; x++) {
+      long long current{seeds[i] + x};
+      for (auto coord : seedToSoil) {
+        if ((current >= coord.source) &&
+            (current <= coord.source + coord.range - 1)) {
+          current = current + (coord.destination - coord.source);
+
+          break;
+        }
+      }
+      for (auto coord : soulToFetilizer) {
+        if ((current >= coord.source) &&
+            (current <= coord.source + coord.range - 1)) {
+          current = current + (coord.destination - coord.source);
+          break;
+        }
+      }
+      for (auto coord : fertilizerToWater) {
+        if ((current >= coord.source) &&
+            (current <= coord.source + coord.range - 1)) {
+          current = current + (coord.destination - coord.source);
+          break;
+        }
+      }
+      for (auto coord : waterToLight) {
+        if ((current >= coord.source) &&
+            (current <= coord.source + coord.range - 1)) {
+          current = current + (coord.destination - coord.source);
+          break;
+        }
+      }
+      for (auto coord : lightToTemperature) {
+        if ((current >= coord.source) &&
+            (current <= coord.source + coord.range - 1)) {
+          current = current + (coord.destination - coord.source);
+          break;
+        }
+      }
+      for (auto coord : temperatureToHumidity) {
+        if ((current >= coord.source) &&
+            (current <= coord.source + coord.range - 1)) {
+          current = current + (coord.destination - coord.source);
+          break;
+        }
+      }
+      for (auto coord : humidityToLocation) {
+        if ((current >= coord.source) &&
+            (current <= coord.source + coord.range - 1)) {
+          current = current + (coord.destination - coord.source);
+          break;
+        }
+      }
+      if (current < finalCoord) {
+        finalCoord = current;
+        cout << "Pushing back: " << current << endl;
+      }
     }
-    for (auto coord : soulToFetilizer) {
-      if (current < coord.source) continue;
-      if (coord.source + coord.range < current) continue;
-      current = current + (coord.destination - coord.source);
-      break;
-    }
-    for (auto coord : fertilizerToWater) {
-      if (current < coord.source) continue;
-      if (coord.source + coord.range < current) continue;
-      current = current + (coord.destination - coord.source);
-      break;
-    }
-    for (auto coord : waterToLight) {
-      if (current < coord.source) continue;
-      if (coord.source + coord.range < current) continue;
-      current = current + (coord.destination - coord.source);
-      break;
-    }
-    for (auto coord : lightToTemperature) {
-      if (current < coord.source) continue;
-      if (coord.source + coord.range < current) continue;
-      current = current + (coord.destination - coord.source);
-      break;
-    }
-    for (auto coord : temperatureToHumidity) {
-      if (current < coord.source) continue;
-      if (coord.source + coord.range < current) continue;
-      current = current + (coord.destination - coord.source);
-      break;
-    }
-    for (auto coord : humidityToLocation) {
-      if (current < coord.source) continue;
-      if (coord.source + coord.range < current) continue;
-      current = current + (coord.destination - coord.source);
-      break;
-    }
-    finalCoord.push_back(current);
-    cout << "Pushing back: " << current << endl;
   }
 
   cout << "Second Finish" << endl;
-
-  auto minElementIterator = min_element(finalCoord.begin(), finalCoord.end());
-  int smallestElement = *minElementIterator;
-  cout << smallestElement << endl;
+  cout << finalCoord << endl;
 }

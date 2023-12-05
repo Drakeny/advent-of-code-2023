@@ -14,3 +14,5 @@ This is my first year participating and on whim I've decided to let RNG choose t
 > Day 3 - Horrible, terrible, disguting code, i give up, can't find the edge case that is throwing the answer off and this monstrosity i've created is not helping. 
 
 > Day 4 - Huh, part 1 was a breeze, i had to rewrite for part 2 and created another monster, this time i can safely say it was language unfamiliarity.
+
+> Day 5 - Part 1 was fairly straight forward, part 2 on the other hand, turned into brute force fest, but the "solution" was done right after part 1, BUT it had a off by 1 and all the time to brute force made it take way too much time.
