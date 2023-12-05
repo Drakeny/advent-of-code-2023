@@ -1,2 +1,0 @@
-G:\DrakenyDev\Projects\DrakenyDev\Cpp\Advent of Code\Advent of Code - Day 2\x64\Debug\Day 2 - Advent of Code.exe
-G:\DrakenyDev\Projects\DrakenyDev\Cpp\Advent of Code\Day 2 - Advent of Code\x64\Debug\Day 2 - Advent of Code.exe
