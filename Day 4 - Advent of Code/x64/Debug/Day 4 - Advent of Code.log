@@ -1,0 +1,4 @@
+﻿  Day 4 - Advent of Code.cpp
+F:\DrakenyDev\Projects\DrakenyDev\Cpp\Advent of Code\Day 4 - Advent of Code\Day 4 - Advent of Code.cpp(110,20): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+F:\DrakenyDev\Projects\DrakenyDev\Cpp\Advent of Code\Day 4 - Advent of Code\Day 4 - Advent of Code.cpp(189,14): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  Day 4 - Advent of Code.vcxproj -> F:\DrakenyDev\Projects\DrakenyDev\Cpp\Advent of Code\Day 4 - Advent of Code\x64\Debug\Day 4 - Advent of Code.exe

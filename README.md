@@ -12,3 +12,5 @@ This is my first year participating and on whim I've decided to let RNG choose t
 > Day 2 - Hmmm, it is currently ugly and I have no idea if it's any "good" but hey, its just day 2 and i'm not drowning in documentation tabs anymore, progress! 
 
 > Day 3 - Horrible, terrible, disguting code, i give up, can't find the edge case that is throwing the answer off and this monstrosity i've created is not helping. 
+
+> Day 4 - Huh, part 1 was a breeze, i had to rewrite for part 2 and created another monster, this time i can safely say it was language unfamiliarity.
