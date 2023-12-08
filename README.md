@@ -18,3 +18,7 @@ This is my first year participating and on whim I've decided to let RNG choose t
 > Day 5 - Part 1 was fairly straight forward, part 2 on the other hand, turned into brute force fest, but the "solution" was done right after part 1, BUT it had a off by 1 and all the time to brute force made it take way too much time.
 
 > Day 6 - Well this was easy...
+
+> Day 7 - Uhh... I'll get it done someday
+
+> Day 8 - Huh, i really don't like this one, part 1 is ok, i'm not happy with part 2, i got the answer with a bit of "cheating" but even without the "cheat" would've disliked this puzzle.
